@@ -1,0 +1,33 @@
+<div class="lobby">
+  <!-- <button class="lobby__leave-button"><box-icon color="black" name="log-out-circle"></box-icon></button> -->
+  <header class="lobby__title">
+    <div class="meme">Q</div>
+    <h1 class="title--outline">Lobby</h1>
+    <h2 class="h2">{{ pin }}</h2>
+  </header>
+  <ul class="lobby__players" *ngIf="players">
+    <li *ngFor="let player of players">
+      {{ player.name }} <small *ngIf="player.isHost">(host)</small>
+    </li>
+    <li class="lobby__players__no-player" *ngFor="let noPlayer of (maxPlayerAmount - playerAmount) | range">...</li>
+  </ul>
+
+  <div class="lobby__feedback">
+    <small *ngIf="playerAmount < minPlayerAmount && players" class="lobby__start-game__feedback">
+      Waiting for at least {{ minPlayerAmount - playerAmount }} players to join
+    </small>
+    <small *ngIf="playerAmount >= minPlayerAmount && !user?.isHost" class="lobby__start-game__feedback">
+      The host can start the game now
+    </small>
+  </div>
+</div>
+
+<div class="background--white lobby__start-game" *ngIf="user?.isHost && playerAmount >= minPlayerAmount">
+  <button 
+    class="button--fill button--full-width button--large button--icon"
+    (click)="loadGame()"  
+  >
+    <span>Start game</span>
+    <box-icon type="solid" color="white" name="hot"></box-icon>
+  </button>
+</div>

@@ -1,0 +1,73 @@
+%serif {
+  font-family: $font-serif;
+  font-weight: 400;
+}
+
+%serif--bold {
+  font-family: $font-serif;
+  font-weight: 900;
+}
+
+%sans {
+  font-family: $font-sans;
+  font-weight: 400;
+}
+
+%sans--bold {
+  font-family: $font-sans;
+  font-weight: 700;
+}
+
+.sans { @extend %sans; }
+.sans--bold { @extend %sans--bold; }
+.serif { @extend %serif; }
+.serif--bold { @extend %serif--bold; }
+
+// title formats
+%title--h1 {
+  @extend %serif--bold;
+  font-size: 3.6em;
+  line-height: 1;
+
+  @include portable { font-size: 2.4em; }
+};
+
+%title--h2 {
+  @extend %serif--bold;
+  font-size: 3em;
+  line-height: 1.1;
+
+  @include portable { font-size: 2.4em; }
+};
+
+%title--h3 {
+  @extend %serif--bold;
+  font-size: 2.7em;
+  line-height: 1.1;
+  @include portable { font-size: 1.8em; }
+};
+
+%title--h4 {
+  @extend %serif--bold;
+  font-size: 1.8em;
+  @include portable { font-size: 1.5em; }
+};
+
+%title--h5 {
+  @extend %serif--bold;
+  font-size: 1.5em;
+  @include portable { font-size: 1.2em; }
+};
+
+%title--h6 {
+  @extend %serif--bold;
+  font-size: 1.2em;
+  @include portable { font-size: 1.1em; }
+};
+
+.h1 { @extend %title--h1; }
+.h2 { @extend %title--h2; }
+.h3 { @extend %title--h3; }
+.h4 { @extend %title--h4; }
+.h5 { @extend %title--h5; }
+.h6 { @extend %title--h6; }

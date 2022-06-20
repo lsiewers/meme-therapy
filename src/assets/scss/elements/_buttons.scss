@@ -1,0 +1,67 @@
+.button {
+  font-size: 1em;
+  padding: $space--small $space--normal;
+
+  &--large {
+    font-size: $text--large !important;
+    padding: $space--small $space--large !important;
+
+    &.button--icon box-icon {
+      @include size(30px);
+      margin-left: $space--extraSmall;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+    @include flexbox(row, center, center)
+  }
+
+  &--icon {
+    @include flexbox(row, center, center);
+
+    span {
+      margin-top: 0.2em;
+      display: inline-block;
+    }
+    box-icon {
+      @include size(27px);
+      margin-left: 6px;
+    }
+  }
+
+  &--fxd {
+    @include fxd(unset, unset, 0, 0);
+    z-index: 99;
+  }
+
+  &--outline {
+    @extend .button;
+    border: solid 5px;
+
+    .background--black & {
+      border-color: white;
+      color: white
+    }
+    
+    .background--white & {
+      border-color: black;
+      color: black;
+    }
+  }
+
+
+  &--fill {
+    @extend .button;
+
+    .background--black & {
+      background-color: white;
+      color: black;
+    }
+    
+    .background--white & {
+      background-color: black;
+      color: white;
+    }
+  }
+}

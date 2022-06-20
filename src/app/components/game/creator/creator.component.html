@@ -1,0 +1,21 @@
+<div class="creator background--white">
+  <app-timer [countdownTime]="180" [warningTime]="30" [showText]="false" (timeOver)="memeSubmitted ? null : submitMeme()"></app-timer>
+  <div *ngIf="retrievedInput | async">
+    <h1 class="h3" *ngIf="(retrievedInput | async)">"{{(retrievedInput | async)?.value }}"</h1>
+  </div>
+  <div class="creator__meme-upload background--black">
+    <div class="creator__meme-upload__input">
+      <label class="button--outline" *ngIf="!memeCreation.meme">upload meme</label>
+      <input (change)="onFileChanged($event)" type="file" accept="image/*">
+    </div>
+    <img class="creator__meme-upload__image" [src]="memeCreation.meme">
+  </div>
+  <button class="button--outline button--icon creator__submit-button" (click)="submitMeme()" *ngIf="!memeSubmitted">
+    <span>Submit</span>
+    <box-icon type="solid" color="black" name="right-arrow-alt"></box-icon>
+  </button>
+  <div class="creator__submitted" *ngIf="memeSubmitted">
+    <p class="meme">C</p>
+    <small>Waiting for other players to finish</small>
+  </div>
+</div>

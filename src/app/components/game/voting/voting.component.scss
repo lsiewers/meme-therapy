@@ -1,0 +1,78 @@
+@import '../../../../assets/scss/all';
+@import '../../../../assets/scss/elements/inputs';
+@import '../../../../assets/scss/elements/buttons';
+
+.voting {
+  padding: $space--extraLarge 0 $space--large;
+
+  &__list__item {
+    @include flexbox(column);
+    margin-bottom: $space--extraLarge;
+    position: relative;
+    min-height: 100vw;
+
+    &__meme { width: 100%; }
+    & > img.is--hidden { opacity: 0; }
+
+    &__select {
+      position: relative;
+
+      option { font-size: .8em; }
+
+      box-icon {
+        @extend %centralize--vertical;
+        right: $space--large;
+      }
+    }
+
+    &__reveal-button {
+      position: absolute;
+      bottom: 0;
+      z-index: 9;
+      align-self: center;
+
+      &.meme--show { bottom: $space--large; }
+      &.meme--hide { display: none }
+    }
+  }
+    
+  &__list__item__meme.vote--revealed {
+    @include abs(0, unset, unset, 0);
+    @include size;
+    padding: $space--normal $space--large;
+  }
+
+  .vote--revealed {
+    &__name {
+      line-height: 1;
+      margin: $space--small 0 0;
+      color: inherit;
+    }
+
+    &__wrong-guess { margin: 0 }
+
+    &__input-value {
+      @extend %centralize;
+      width: 100%;
+      text-align: center;
+    }
+
+    &.answer--good {
+      border: solid 4px $color--green;
+      color:  $color--green;
+    }
+
+    &.answer--wrong {
+      border: solid 4px  $color--red;
+      color:  $color--red;
+    }
+  }
+
+  &__feedback {
+    display: inline-block;
+    padding: 0 $space--normal;
+    font-size: $text--normal;
+    opacity: .7;
+    text-align: center;
+  }
+}

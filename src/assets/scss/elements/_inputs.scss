@@ -1,0 +1,40 @@
+.input {
+
+  &--text {
+    border: solid 3px;
+    padding: $space--extraSmall $space--small;
+    margin-bottom: $space--small;
+
+    .background--black & {
+      border-color: white;
+
+      &, &::placeholder { color: white; }
+      &::placeholder { opacity: .7; }
+    }
+    
+    .background--white & {
+      border-color: black;
+
+      &, &::placeholder { color: black; }
+      &::placeholder { opacity: .7; }
+    }
+  }
+
+  &--label {
+    position: relative;
+    
+    label {
+      position: absolute; 
+      transform: translateY(-90%);
+      font-size: 1.2em
+    }
+
+    .background--black & {
+      color: white;
+    }
+
+    .background--white & {
+      color: black;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../../../assets/scss/all';
+
+@import '../../../../assets/scss/elements/type';
+@import '../../../../assets/scss/elements/buttons';
+@import '../../../../assets/scss/elements/inputs';
+
+.form {
+  @include flexbox(column, flex-start, center);
+  padding: $space--large;
+  height: 100vh;
+
+  &.entry { justify-content: center }
+
+  &__form {
+    &:not([hidden]){@include flexbox(column, center);}
+    
+    h1 { line-height: .9; }
+    &__emotion { opacity: .7; }
+    &__inspiration {
+      opacity: .7;
+      font-size: .9em;
+    }
+
+    textarea { 
+      width: 100%; 
+      margin-top: $space--large;
+    }
+    button { align-self: flex-end; }
+  }
+
+
+  &__entry {
+    @include flexbox(column, center);
+    margin-left: -$space--large;
+
+    &__text {
+      width: 100vw;
+      padding: $space--normal $space--large;
+      margin-bottom: $space--large;
+      text-align: center;
+
+      p, .meme { color: black !important; } 
+      p { 
+        font-family: $font-serif;
+        font-weight: bold;
+        font-size: $text--extraLarge;
+        word-break: break-word;
+      }
+
+      .meme { font-size: 4.5em; }
+    }
+  }
+}

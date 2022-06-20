@@ -1,0 +1,25 @@
+.background--white {
+  background-color: white;
+
+  small, p, h1, h2, h3 { 
+    color: black;
+  }
+
+  .tag { 
+    color: white;
+    background-color: black;
+  }
+}
+
+.background--black {
+  background-color: black;
+  
+  small, p, h1, h2, h3 { 
+    color: white;
+  }
+
+  .tag { 
+    color: black;
+    background-color: white;
+  }
+}

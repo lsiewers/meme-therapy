@@ -1,0 +1,15 @@
+@import '../../../../assets/scss/all';
+
+@import '../../../../assets/scss/elements/type';
+
+.round {
+  @include flexbox(column, flex-start, center);
+  padding: ($space--extraLarge * 2) $space--large $space--extraLarge;
+  height: 100vh;
+
+  &__title { margin: 0; }
+  &__description { 
+    margin: $space--extraSmall 0 $space--extraLarge; 
+    line-height: 1.1;
+  }
+}

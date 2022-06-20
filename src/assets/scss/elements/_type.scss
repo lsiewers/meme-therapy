@@ -1,0 +1,15 @@
+.title--outline {
+  @extend .h1;
+  color: white;
+  -webkit-text-stroke: .06em black;
+  letter-spacing: 2px;
+}
+
+.tag {
+  font-size: $text--extraSmall;
+  padding: $space--extraSmall;
+}
+
+.h1 { font-size: 3.2em; }
+.h2 { font-size: 1.8em }
+.h3 { font-size: 1.5em }

@@ -1,0 +1,29 @@
+@import '../../../assets/scss/all';
+
+@import '../../../assets/scss/elements/type';
+@import '../../../assets/scss/elements/buttons';
+@import '../../../assets/scss/elements/inputs';
+
+.feedback {
+  width: 100%;
+
+  &__error {
+    display: inline-block;
+    padding: $space--normal;
+    font-size: $text--normal;
+    opacity: .7;
+    text-align: center;
+    line-height: 1;
+  }
+
+  &__question {
+    margin-top: $space--large;
+    label { 
+      font-size: $text--normal; 
+      word-break: break-word;
+    }
+    textarea {
+      width: 100%;
+    }
+  }
+}

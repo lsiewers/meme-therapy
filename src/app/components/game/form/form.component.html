@@ -1,0 +1,25 @@
+<div class="background--black form" [class.entry]="answerSubmitted">
+  <app-timer [countdownTime]="90" [showText]="false" [warningTime]="20" (timeOver)="timeOver()" [color]="'white'"></app-timer>
+
+  <div class="form__form" [hidden]="answerSubmitted">
+    <!-- <p class="meme h1">%</p> -->
+    <h1 class="h3">What makes you feel *<span class="form__form__emotion">{{ negativeFeeling }}</span>* lately?</h1>
+    <small *ngIf="!answerSubmitted" class="form__form__inspiration">{{ inspiration }}</small>
+    <textarea [(ngModel)]="playerInput.value" type="text" maxlength="60" class="input--text" placeholder="Write down..."></textarea>
+    <button class="button--fill button--icon" (click)="submitInput()">
+      <span>Submit</span>
+      <box-icon type="solid" color="black" name="right-arrow-alt"></box-icon>
+    </button>
+  </div>
+
+  <ng-container *ngIf="answerSubmitted">
+    <div class="form__entry">
+      <div class="form__entry__text background--white">
+        <p>"{{ playerInput.value }}"</p>
+        <span class="meme">K</span>
+      </div>
+      <!-- <button class="button--outline" (click)="answerSubmitted = false">Change answer</button> -->
+    </div>
+  </ng-container>
+</div>
+

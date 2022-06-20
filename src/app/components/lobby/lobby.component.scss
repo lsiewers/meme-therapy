@@ -1,0 +1,65 @@
+@import '../../../assets/scss/all';
+
+@import '../../../assets/scss/elements/type';
+@import '../../../assets/scss/elements/buttons';
+
+.lobby{
+  padding: $space--large;
+  height: calc(100vh - 80px);
+
+  &__leave-button {
+    @include abs;
+    box-icon { @include size(36px); }
+  }
+
+  &__title {
+    text-align: center;
+    padding-top: $space--extraLarge;
+
+    .title--outline, .h2 { 
+      margin: 0; 
+      line-height: 1;
+    }
+
+    .meme { 
+      font-size: 5em; 
+      line-height: .4em;
+    }
+  }
+
+  &__players {
+    text-align: center;
+    font-size: 1.6em;
+    margin: $space--normal 0 0;
+
+    li { margin: $space--extraSmall; }
+    li small { 
+      font-size: .7em;
+      opacity: .6;
+    }
+
+    &__no-player { opacity: .3; }
+  }
+
+
+  &__feedback { 
+    display: inline-block;
+    width: 100%;
+    text-align: center; 
+    opacity: .6;
+    margin: $space--normal 0;
+  }
+  
+  &__start-game {
+    @include fxd(unset, unset, 0, 0);
+    @include size(100%, 80px);
+
+    .button--full-width, small {
+      // display: inline-block;
+      padding: $space--small $space--large;
+      height: 100%;
+      line-height: .9;
+      font-size: 1em;
+    }
+  }
+}

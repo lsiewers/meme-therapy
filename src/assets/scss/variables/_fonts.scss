@@ -1,0 +1,17 @@
+// $font-sans: roc-grotesk-condensed,sans-serif;
+$font-sans: nimbus-sans-condensed,sans-serif;
+$font-serif: felt-tip-woman, comic-sans, sans-serif;
+$font-meme: 'Meme Font';
+
+@font-face 
+{ 
+  font-family: 'Meme Font';  
+  src: url('../../fonts/thememefont.ttf'); 
+}
+
+
+$text--extraLarge: 1.5em;
+$text--large: 1.3em;
+$text--normal: 1.1em;
+$text--small: .9em;
+$text--extraSmall: .8em;

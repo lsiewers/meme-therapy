@@ -1,0 +1,68 @@
+@import '../../../../assets/scss/all';
+
+@import '../../../../assets/scss/elements/type';
+@import '../../../../assets/scss/elements/buttons';
+
+.leaderboard {
+  @include flexbox(column, center, space-between);
+  min-height: calc(100vh - 80px);
+
+  &__container { 
+    width: 100%;
+    padding: $space--large; 
+
+    .leaderboard.show--feedback & { overflow: hidden; }
+  }
+
+  &__leave-button {
+    @include abs;
+    box-icon { @include size(36px); }
+  }
+
+  &__title {
+    text-align: center;
+    padding-top: $space--extraLarge;
+
+    .title--outline, .h2 { 
+      margin: 0; 
+      line-height: 1;
+    }
+
+    .meme { 
+      font-size: 5em; 
+      line-height: .4em;
+    }
+  }
+
+  &__players {
+    font-size: 1.6em;
+    margin: $space--normal 0 0;
+
+    &__player {
+      @include flexbox(row, center, space-between);
+
+
+      small { 
+        font-size: .7em;
+        opacity: .6;
+      }
+    }
+  }
+
+  &__feedback-button {
+    margin-bottom: $space--normal
+  }
+
+  &__new-button {
+    @include fxd(unset, unset, 0, 0);
+    @include size(100%, 80px);
+  }
+
+  &__host-feedback {
+    display: inline-block;
+    width: 100%;
+    text-align: center; 
+    opacity: .6;
+    margin: $space--normal 0;
+  }
+}

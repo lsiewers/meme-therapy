@@ -1,0 +1,8 @@
+<div class="timer color--{{color}}" [class.warning]="warn()" [hidden]="timeToPercentage() <= 0">
+  <p class="timer__time" [hidden]="!showText">{{( counter$ | async )}}</p>
+  <div 
+    class="timer__bar" 
+    [style.transform]="'scaleX(' + timeToPercentage() + '%)'">
+  </div>
+</div>
+

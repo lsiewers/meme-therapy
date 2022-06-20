@@ -1,0 +1,36 @@
+// normalize or reset
+* { box-sizing: border-box; }
+
+body, html {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2em;
+  max-width: 100vw;
+  height: 100vh;
+  // overflow: hidden;
+}
+
+ul { padding: 0 }
+
+li {
+  list-style: none;
+}
+
+button, input, textarea, select {
+  appearance: none;
+  border: none;
+  background-color: unset;
+  font-size: 1.2em;
+}
+
+input[type=number] {
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,65 @@
+@import '../../../assets/scss/all';
+
+@import '../../../assets/scss/elements/inputs';
+@import '../../../assets/scss/elements/buttons';
+
+$footer-height: $space--large;
+
+.home {
+
+  &__header {
+    position: relative;
+    height: 45vh;
+
+    &__logo {
+      @extend %centralize;
+      padding: 0 $space--large;
+      width: 100%;
+    }
+  }
+
+  &__main {
+    height: calc(55vh - $footer-height);
+    padding: $space--extraLarge $space--large;
+    position: relative;
+    background-color: black;
+
+    &__title {
+      @include abs(0);
+      align-self: flex-start;
+      margin: 0;
+      transform: translateY(-75%);
+      color: black
+    }
+
+    &__inputs {
+      @include flexbox(column);
+      margin-top: $space--small;
+
+      .join-button { margin-bottom: $space--extraSmall; }
+
+      .input--label, .input--text { width: 100%; }
+
+      .feedback {
+        font-family: $font-serif;
+        font-weight: bold;
+        margin: 0 0 $space--extraSmall;
+      }
+    }
+
+    &__create-new {
+      @include flexbox(column, center);
+    }
+  }
+
+  &__footer {
+    display: block;
+    height: $footer-height;
+    text-align: center;
+
+    small {
+      font-size: .8em;
+      opacity: .7;
+    }
+  }
+}

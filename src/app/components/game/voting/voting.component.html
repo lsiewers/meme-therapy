@@ -1,0 +1,65 @@
+<div class="voting background--white">
+  <app-timer [countdownTime]="votingTime" [warningTime]="10" (timeOver)="timeOver()" [color]="'black'" *ngIf="!reveal && !submitted"></app-timer>
+  <ul class="voting__list" *ngIf="memes$ | async">
+    <li class="voting__list__item" *ngFor="let meme of memes$ | async as MemeCreation; let i = index">
+      <img class="voting__list__item__meme" [class.is--hidden]="reveal && meme.hideMeme" [src]="meme.meme">
+      <!-- vote select -->
+      <div *ngIf="!submitted && !reveal" class="button--full-width button--icon voting__list__item__select">
+        <select
+          [disabled]="submitted"
+          required
+          class="button--outline button--full-width button--large"
+          (change)="selectChange($event, meme.id!, meme.playerInputId!, i)"
+        >
+          <option disabled value="" selected disabled selected>Belongs to...</option>
+          <option 
+            *ngFor="let player of players$ | async" 
+            [value]="player.id"
+          >
+            {{player.name}}
+          </option>
+        </select>
+        <box-icon type="solid" color="black" name="down-arrow-alt" *ngIf="!submitted"></box-icon>
+      </div>
+
+      <!-- vote reveal -->
+      <div 
+        class=" voting__list__item__meme vote--revealed
+          answer--{{isRightAnswer(meme, i) ? 'good' : 'wrong'}}" 
+        *ngIf="reveal && meme.hideMeme"
+      >
+        <!-- <p>{{meme.playerInputId === (votes | objNgFor)[i].playerInputId ? 'good' : 'wrong'}}</p> -->
+        <h1 class="vote--revealed__name">{{ getPlayerById(meme.playerInputId!)?.name }}</h1>
+        <h3 *ngIf="!isRightAnswer(meme, i)" class="vote--revealed__wrong-guess">you guessed {{ getPlayerById(votes[i].guessedPlayerId!)?.name ? getPlayerById(votes[i].guessedPlayerId!)?.name : 'nothing' }}</h3>
+        <small class="vote--revealed__input-value">"{{ getInputById(meme.playerInputId!)?.value }}"</small>
+      </div>
+
+      <button 
+        class="button--outline voting__list__item__reveal-button {{meme.hideMeme ? 'meme--show' : 'meme--hide'}}" 
+        *ngIf="reveal" 
+        (click)="meme.hideMeme = !meme.hideMeme"
+      >
+        show {{meme.hideMeme?'meme':'answer'}}
+      </button>
+    </li>
+  </ul>
+
+  <button
+    class="button--fill button--full-width button--icon button--large"
+    (click)="submitVotes()"
+    *ngIf="!submitted && !reveal"
+  >
+    submit
+    <box-icon type="solid" color="white" name="badge-check"></box-icon>
+  </button>
+  <button
+    class="button--fill button--full-width button--icon button--large button--fxd"
+    (click)="playerReady()"
+    *ngIf="reveal && !continue"
+  >
+    Continue
+    <box-icon type="solid" color="white" name="right-arrow-alt"></box-icon>
+  </button>
+  <small class="voting__feedback" *ngIf="!reveal && submitted">Waiting for the other players to vote</small>
+  <small class="voting__feedback" *ngIf="reveal && continue">Waiting for the other players to continue</small>
+</div>

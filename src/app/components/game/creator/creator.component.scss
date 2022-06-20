@@ -1,0 +1,55 @@
+@import '../../../../assets/scss/all';
+@import '../../../../assets/scss/elements/inputs';
+@import '../../../../assets/scss/elements/buttons';
+
+
+.creator {
+  @include flexbox(column, center);
+  padding: $space--extraLarge 0 $space--large;
+
+  h1 {
+    margin: $space--extraLarge $space--large $space--large;
+    text-align: center;
+    font-family: $font-serif;
+    font-size: $text--large;
+  }
+
+  &__meme-upload {
+    width: 100vw;
+    min-height: 100vw;
+    position: relative;
+
+    &__input {
+      @include size(100%);
+      position: absolute;
+      z-index: 999;
+
+      .button--outline {
+        border-color: white;
+        color: white;
+      }
+
+      label {
+        @extend %centralize;
+      }
+
+      input { 
+        @include size(100%);
+        display: block;
+        opacity: 0; 
+      }
+    }
+
+
+    img { width: 100%;}
+  }
+
+  &__submit-button {
+    margin: $space--normal 0;
+  }
+
+  &__submitted {
+    font-size: 6em;
+    text-align: center;
+  }
+}

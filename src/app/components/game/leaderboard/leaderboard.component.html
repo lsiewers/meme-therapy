@@ -1,0 +1,23 @@
+<div class="leaderboard background--white" [class.show--feedback]="showFeedback">
+  <div class="leaderboard__container">
+    <!-- <button class="leaderboard__leave-button"><box-icon color="black" name="log-out-circle"></box-icon></button> -->
+    <header class="leaderboard__title">
+      <div class="meme">3</div>
+      <h1 class="title--outline">Scores</h1>
+    </header>
+    <ul class="leaderboard__players" *ngIf="players">
+      <li  class="leaderboard__players__player" *ngFor="let player of players">
+        <div>{{ player.name }} <small *ngIf="player.isHost">(host)</small></div>
+        <div class="leaderboard__players__player__score" [style.transform]="'scale({{ 0.5 + 0.5 * (player.score+1)}})'"> {{ player.score }} </div>
+      </li>
+    </ul>
+  </div>
+  <button class="button--outline leaderboard__feedback-button" *ngIf="!sentFeedback" (click)="showFeedback = true">give feedback</button>
+  <button class="button--fill button--full-width leaderboard__new-button button--large" (click)="newRound()" *ngIf="(user | async)?.isHost">New Round</button>
+  <small *ngIf="!(user | async)?.isHost" class="leaderboard__host-feedback">
+    The host can start a new round
+  </small>
+</div>
+
+<app-feedback [pin]="pin" [playerId]="playerId" *ngIf="!sentFeedback && showFeedback" (feedbackSubmit)="showFeedback = false; sentFeedback = true">
+</app-feedback>

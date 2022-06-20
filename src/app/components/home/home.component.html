@@ -1,0 +1,49 @@
+<div class="home__container">
+  <header class="home__header">
+    <img class="home__header__logo" src="assets/img/logo.png" alt="logo Meme Therapy">
+  </header>
+  
+  <main class="home__main background--black">
+    <h1 class="home__main__title">Let's Play!</h1>
+    <div class="home__main__inputs">
+      <div class="input--label" *ngIf="!checkedPin && !newGame">
+        <label>Enter Lobby</label>
+        <input 
+          type="text" 
+          class="input--text" 
+          (keydown.Enter)="checkPin()"
+          (blur)="checkPin()" 
+          minlength="4" maxlength="4" 
+          placeholder="Game pin..." 
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+          [(ngModel)]="pinInput"
+        >
+      </div>
+      <div class="input--label" *ngIf="checkedPin || newGame">
+        <label>Enter name</label>
+        <input 
+          type="text" 
+          class="input--text input--name" 
+          minlength="2" maxlength="16" 
+          placeholder="Your name..." 
+          oninput="this.value = this.value.replace(/[^\w\s]/gi, '')"
+          [(ngModel)]="nameInput"
+        >
+      </div>
+      <p class="feedback" *ngIf="error">{{error}}</p>
+      <button class="join-button button--outline button--full-width" *ngIf="checkedPin" (click)="joinRoom()">Join</button>
+      <button class="join-button button--outline button--full-width" *ngIf="newGame" (click)="createNewRoom()">Start</button>
+    </div>
+    
+    <!-- <p class="loading" [class.is--visible]="loading">validating...</p> -->
+    
+    <div class="home__main__create-new" *ngIf="!newGame">
+      <small>or</small>
+      <button class="button--fill" (click)="newGame = true">Create new game</button>
+    </div>
+  </main>
+  
+  <footer class="home__footer background--black">
+    <small> app made by Luuk Siewers, a genius </small>
+  </footer>
+</div>

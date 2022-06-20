@@ -1,0 +1,11 @@
+<app-modal>
+  <div class="feedback background--white">
+
+    <div class="feedback__question" *ngFor="let q of questions">
+      <label>{{q.question}}</label>
+      <textarea class="input--text" type="text" [(ngModel)]="q.answer"></textarea>
+    </div>
+    <small class="feedback__error">{{ error }}</small>
+    <button class="button--fill button--full-width" (click)="submitFeedback()">submit feedback</button>
+  </div>
+</app-modal>
